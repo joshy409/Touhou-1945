@@ -136,6 +136,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Background.cpp" />
+    <ClCompile Include="BulletPool.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerController.cpp" />
@@ -144,6 +145,7 @@
   <ItemGroup>
     <ClInclude Include="..\thirdparty\raylib\raylib.h" />
     <ClInclude Include="Background.h" />
+    <ClInclude Include="BulletPool.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerController.h" />
     <ClInclude Include="SimpleSprites.h" />
