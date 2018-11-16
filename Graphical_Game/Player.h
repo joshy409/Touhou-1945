@@ -9,13 +9,13 @@ class Player :
 public:
 	Player();
 	~Player();
+
 	BulletPool *bullets;
-	std::vector<SimpleSprites*> *projectiles;
 	int hits;
 	float speed;
 	void shoot();
-	void action();
-	void drawProjectiles();
+	void update();
+	void drawBullets();
 	void hit(Player enemy);
 };
 

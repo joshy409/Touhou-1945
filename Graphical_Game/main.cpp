@@ -42,8 +42,8 @@ int main()
 		DrawText(std::to_string(enemy.collider.width).c_str(), 100, 200, 50, BLACK);
 		DrawText(std::to_string(enemy.collider.height).c_str(), 100, 250, 50, BLACK);
 		player.draw();
-		player.action();
-		//player.hit(enemy);
+		player.update();
+		player.hit(enemy);
 
 		EndDrawing();
 		//----------------------------------------------------------------------------------
