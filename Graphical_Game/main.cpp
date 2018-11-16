@@ -11,10 +11,11 @@ int main()
 
 	InitWindow(screenWidth, screenHeight, "raylib [core] example - basic window");
 	Background background;
-	PlayerController player;
+	Player player;
 	SetTargetFPS(120);
 	//--------------------------------------------------------------------------------------
-
+	int i = 0;
+	
 	// Main game loop
 	while (!WindowShouldClose())    // Detect window close button or ESC key
 	{
@@ -28,7 +29,7 @@ int main()
 		BeginDrawing();
 
 		ClearBackground(RAYWHITE);
-
+		
 		background.draw();
 		player.draw();
 		player.action();

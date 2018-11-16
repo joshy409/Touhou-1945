@@ -26,7 +26,6 @@ SimpleSprites::~SimpleSprites()
 void SimpleSprites::translate(const Vector2 &delta)
 {
 	pos = { pos.x + delta.x , pos.y + delta.y };
-	collider.y += delta.y;
 }
 
 void SimpleSprites::draw()
