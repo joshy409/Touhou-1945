@@ -18,11 +18,12 @@ bool BossAbilityController::pattern1(Boss & boss, Player & player, const Vector2
 	//move to left side shoot 3 rays of bullets toward players location
 	//then repeats the process in the middle of the room and right side of the room
 	static int delayframe = 0;
+	static bool finish = true;
 
 	//move boss
 	if (boss.moveTo(bossDest)) {
 		//fire when boss is at the destination
-		if (delayframe > GetFPS() / 4  && std::count(bbpool->free->begin(),bbpool->free->end(), true) < 7) {
+		if (delayframe > GetFPS() / 4 ) {  
 			SimpleSprites* temp = bbpool->retrieve();
 			if (temp != NULL) {
 				setDestination(temp, boss, player);
@@ -30,10 +31,18 @@ bool BossAbilityController::pattern1(Boss & boss, Player & player, const Vector2
 			delayframe = 0;
 
 		}
+		//TODO: make the boss stop and move to new location after firing 7 bullets
+		if (std::count(bbpool->free->begin(), bbpool->free->end(), true) > 7){
+			finish = false;
+		}
+		
 
 	}
+	if (std::count(bbpool->free->begin(), bbpool->free->end(), true) <= 0) {
+		finish = true;
+	}
 	delayframe++;
-	return true;
+	return finish;
 
 }
 

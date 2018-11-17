@@ -10,6 +10,9 @@ Boss::Boss()
 	collider.radius = texture.width / 2;
 	hp = 10;
 	abilityControl = new BossAbilityController();
+	AIBrain.push(abilityControl);
+	AIBrain.push(abilityControl);
+	AIBrain.push(abilityControl);
 }
 
 
@@ -21,8 +24,17 @@ void Boss::update(Player& player)
 {
 	if (isAlive(player.hits)) {
 		if (abilityControl->pattern1(*this, player, Vector2{ SCREENWIDTH / 4, 100 })) {
-			abilityControl->drawBullets();
+			
+		} else { 
+			abilityControl->pattern1(*this, player, Vector2{ 1500, 100 });
 		}
+
+		//if (!(AIBrain.front()->pattern1(*this, player, Vector2{ SCREENWIDTH / 4, 100 }))) {
+			//AIBrain.pop();
+		//}
+
+
+		abilityControl->drawBullets();
 	}
 	else {
 		DrawText("yay", SCREENWIDTH / 2, SCREENHEIGHT / 2, 100, WHITE);

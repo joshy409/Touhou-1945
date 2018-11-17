@@ -2,6 +2,8 @@
 #include "SimpleSprites.h"
 #include "BossAbilityController.h"
 #include "Background.h"
+#include <queue>
+
 
 class Player;
 
@@ -19,8 +21,8 @@ public:
 	int hp;
 	void update(Player& player);
 	bool isAlive(const int hits);
-
-
+	
+	std::queue<BossAbilityController*> AIBrain;
 	BossAbilityController* abilityControl;
 
 };
