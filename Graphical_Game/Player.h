@@ -1,8 +1,10 @@
 #pragma once
 #include "SimpleSprites.h"
 #include "BulletPool.h"
-#include <algorithm>
-#include <vector>
+#include "Background.h"
+
+class Boss;
+
 class Player :
 	public SimpleSprites
 {
@@ -14,8 +16,8 @@ public:
 	int hits;
 	float speed;
 	void shoot();
-	void update();
+	void update(Boss& boss);
 	void drawBullets();
-	void hit(Player enemy);
+	void hit(Boss& enemy);
 };
 

@@ -1,6 +1,6 @@
 #include "Player.h"
 
-
+#include "Boss.h"
 
 Player::Player() : SimpleSprites("GameAssets/Ships/player_ship.png")
 {
@@ -16,7 +16,7 @@ Player::~Player()
 }
 
 //update function to check player inputs
-void Player::update()
+void Player::update(Boss& boss)
 {
 	if (IsKeyDown(KEY_LEFT)) {
 		translate(Vector2{ -speed,0 });
@@ -33,6 +33,8 @@ void Player::update()
 	}
 	shoot();
 	drawBullets();
+	hit(boss);
+	DrawText(std::to_string(hits).c_str(), 100, 50, 50, WHITE);
 	pos.x = std::clamp((int)pos.x, 0, SCREENWIDTH - texture.width);
 	pos.y = std::clamp((int)pos.y, 0, SCREENHEIGHT - texture.height);
 }
@@ -52,17 +54,20 @@ void Player::drawBullets() {
 		if (bullets->free->at(i) == true) {
 			bullets->pool->at(i)->translate(Vector2{ 0,-speed - 1 });
 			bullets->pool->at(i)->draw();
-			if (bullets->pool->at(i)->pos.y < 0) {
+			//if (bullets->pool->at(i)->pos.y < 0) {
+			//if (CheckCollisionRecs(bullets->pool->at(i)->collider, Background::playArea[0] )) {
+			if (collisionCheck(Background::playArea, bullets->pool->at(i)->collider)) {
 				bullets->recycle(bullets->pool->at(i));
+			hits = 0;
 			}
 		}
 	}
 }
 
-void Player::hit(Player enemy) {
+void Player::hit(Boss &enemy) {
 	for (int i = 0; i < bullets->free->size(); i++) {
 		if (bullets->free->at(i) == true) {
-			if (CheckCollisionRecs(bullets->pool->at(i)->collider, enemy.collider)) {
+			if (CheckCollisionCircleRec(enemy.collider.center, enemy.collider.radius, bullets->pool->at(i)->collider)) {
 				hits++;
 				bullets->recycle(bullets->pool->at(i));
 			}

@@ -46,3 +46,28 @@ SimpleSprites * SimpleSprites::Clone()
 {
 	return new SimpleSprites(*this);
 }
+
+bool SimpleSprites::collisionCheck(std::vector<Rectangle> playArea, Rectangle collider)
+{
+	for (auto rec : playArea) {
+		if (CheckCollisionRecs(rec, collider)) {
+			return true;
+		}
+	}
+	return false;
+}
+
+bool SimpleSprites::moveTo(Vector2 dest)
+{
+	if (abs(dest.x - pos.x) <= 5 && abs(dest.y - pos.y) <= 5) {
+		return true;
+	}
+	else {
+		travelDistance.x = dest.x - pos.x;
+		travelDistance.y = dest.y - pos.y;
+		distance = sqrt(pow((pos.x - dest.x), 2) + pow((pos.y - dest.y), 2));
+		pos.x += travelDistance.x / distance * 4;
+		pos.y += travelDistance.y / distance * 4;
+		return false;
+	}
+}

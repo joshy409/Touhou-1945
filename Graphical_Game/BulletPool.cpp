@@ -24,24 +24,4 @@ BulletPool::~BulletPool()
 {
 }
 
-SimpleSprites * BulletPool::retrieve()
-{
-	for (int i = 0; i < pool->size(); i++) {
-		if (free->at(i) == false) {
-			free->at(i) = true;
-			return pool->at(i);
-		}
-	}
-	return NULL;
-}
 
-void BulletPool::recycle(SimpleSprites * obj)
-{
-	auto temp = std::find(pool->begin(), pool->end(), obj);
-	free->at(std::distance(pool->begin(), temp)) = false;
-}
-
-size_t BulletPool::capacity()
-{
-	return pool->size();
-}

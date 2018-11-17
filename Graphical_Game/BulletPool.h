@@ -1,9 +1,10 @@
 #pragma once
 #include "SimpleSprites.h"
+#include "ObjectPool.h"
 #include <algorithm>
 #include <vector>
 
-class BulletPool
+class BulletPool : public ObjectPool
 {
 public:
 	BulletPool();
@@ -11,13 +12,6 @@ public:
 
 	SimpleSprites* laserL;
 	SimpleSprites* laserR;
-
-	std::vector<SimpleSprites*> *pool;                            
-	std::vector<bool> *free;
-
-	SimpleSprites* retrieve();                     
-	void recycle(SimpleSprites* obj);              
-
-	size_t capacity();                  
+     
 };
 
