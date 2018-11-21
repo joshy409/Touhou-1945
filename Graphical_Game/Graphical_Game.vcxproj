@@ -137,8 +137,11 @@
   <ItemGroup>
     <ClCompile Include="Background.cpp" />
     <ClCompile Include="Boss.cpp" />
-    <ClCompile Include="BossAbilityController.cpp" />
+    <ClCompile Include="BossAbilityBase.cpp" />
     <ClCompile Include="BossBulletPool.cpp" />
+    <ClCompile Include="BossPattern1.cpp" />
+    <ClCompile Include="BossPattern2.cpp" />
+    <ClCompile Include="BossPattern3.cpp" />
     <ClCompile Include="BulletPool.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="ObjectPool.cpp" />
@@ -149,8 +152,11 @@
     <ClInclude Include="..\thirdparty\raylib\raylib.h" />
     <ClInclude Include="Background.h" />
     <ClInclude Include="Boss.h" />
-    <ClInclude Include="BossAbilityController.h" />
+    <ClInclude Include="BossAbilityBase.h" />
     <ClInclude Include="BossBulletPool.h" />
+    <ClInclude Include="BossPattern1.h" />
+    <ClInclude Include="BossPattern2.h" />
+    <ClInclude Include="BossPattern3.h" />
     <ClInclude Include="BulletPool.h" />
     <ClInclude Include="ObjectPool.h" />
     <ClInclude Include="Player.h" />

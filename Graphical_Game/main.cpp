@@ -9,7 +9,7 @@ int main()
 	//--------------------------------------------------------------------------------------
 	int screenWidth = SCREENWIDTH;
 	int screenHeight = SCREENHEIGHT;
-
+	srand(time(NULL));
 	InitWindow(screenWidth, screenHeight, "Touhou 1945 - Joshua Yang");
 	Background background;
 	Player player;
@@ -32,14 +32,13 @@ int main()
 
 		ClearBackground(RAYWHITE);
 		
-		//background.draw();
+		background.draw();
 
 		boss.draw();
-		//DrawCircle(boss.collider.center.x, boss.collider.center.y, boss.collider.radius, BLACK);
+		DrawCircle(boss.collider.center.x, boss.collider.center.y, boss.collider.radius, BLACK);
 		player.draw();
 		player.update(boss);
 		boss.update(player);
-		//boss.abilityControl->drawBullets();
 
 		EndDrawing();
 		//----------------------------------------------------------------------------------

@@ -16,7 +16,6 @@ public:
 	Vector2 destination;
 	Vector2 travelDistance;
 	float distance;
-	bool moveTo(Vector2 dest);
 	SimpleSprites();
 	SimpleSprites(const SimpleSprites &copy);
 	SimpleSprites(const std::string & filename);

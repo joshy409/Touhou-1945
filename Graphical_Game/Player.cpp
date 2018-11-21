@@ -58,7 +58,6 @@ void Player::drawBullets() {
 			//if (CheckCollisionRecs(bullets->pool->at(i)->collider, Background::playArea[0] )) {
 			if (collisionCheck(Background::playArea, bullets->pool->at(i)->collider)) {
 				bullets->recycle(bullets->pool->at(i));
-			hits = 0;
 			}
 		}
 	}

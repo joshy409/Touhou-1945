@@ -39,7 +39,16 @@
     <ClCompile Include="BossBulletPool.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="BossAbilityController.cpp">
+    <ClCompile Include="BossAbilityBase.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BossPattern1.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BossPattern2.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BossPattern3.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -68,7 +77,16 @@
     <ClInclude Include="BossBulletPool.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="BossAbilityController.h">
+    <ClInclude Include="BossAbilityBase.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BossPattern1.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BossPattern2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BossPattern3.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
