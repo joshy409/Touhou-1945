@@ -22,9 +22,11 @@ public:
 	~Boss();
 	Circle collider;
 	int hp;
+	int hits = 0;
 	void update(Player& player);
 	bool isAlive(const int hits);
 	bool moveTo(Vector2 dest);
+	void hit(Player& player);
 	BossPattern1* ability1 = new BossPattern1();
 	BossPattern2* ability2 = new BossPattern2();	
 	BossPattern3* ability3 = new BossPattern3();

@@ -37,6 +37,7 @@ int main()
 		boss.draw();
 		DrawCircle(boss.collider.center.x, boss.collider.center.y, boss.collider.radius, BLACK);
 		player.draw();
+		DrawRectangle(player.collider.x, player.collider.y, player.collider.width, player.collider.height, BLACK);
 		player.update(boss);
 		boss.update(player);
 

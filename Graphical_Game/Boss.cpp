@@ -9,7 +9,13 @@ Boss::Boss()
 	collider.center = Vector2{ pos.x + (texture.width / 2),pos.y + (texture.height / 2) };
 	collider.radius = texture.width / 2;
 	hp = 100;
-	//AIBrain.push(ability1);
+	AIBrain.push(ability1);
+	AIBrain.push(ability2);
+	AIBrain.push(ability3);
+	AIBrain.push(ability1);
+	AIBrain.push(ability2);
+	AIBrain.push(ability3);
+	AIBrain.push(ability1);
 	AIBrain.push(ability2);
 	AIBrain.push(ability3);
 	bbpool = new BossBulletPool();
@@ -31,6 +37,8 @@ void Boss::update(Player& player)
 		}
 
 		AIBrain.front()->drawBullets(bbpool);
+		DrawText(std::to_string(hits).c_str(), 100, 100, 50, WHITE);
+		hit(player);
 	}
 	else {
 		DrawText("yay", SCREENWIDTH / 2, SCREENHEIGHT / 2, 100, WHITE);
@@ -60,3 +68,16 @@ bool Boss::moveTo(Vector2 dest)
 		return false;
 	}
 }
+
+void Boss::hit(Player & player)
+{
+	for (int i = 0; i <  bbpool->free->size(); i++) {
+		if (bbpool->free->at(i) == true) {
+			if (CheckCollisionRecs(bbpool->pool->at(i)->collider, player.collider)) {
+				hits++;
+				bbpool->recycle(bbpool->pool->at(i));
+			}
+		}
+	}
+}
+

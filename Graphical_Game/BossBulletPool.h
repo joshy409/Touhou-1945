@@ -6,8 +6,11 @@ class BossBulletPool :
 public:
 	BossBulletPool();
 	~BossBulletPool();
-
+	struct Circle {
+		Vector2 center;
+		float radius;
+	};
 	SimpleSprites* bullets;
-
+	Circle collider;
 };
 
