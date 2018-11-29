@@ -1,5 +1,6 @@
 #include "Background.h"
 
+//static variable for edge of the screen colliders
 std::vector<Rectangle> Background::playArea;
 
 Background::Background()

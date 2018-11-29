@@ -7,7 +7,7 @@ Boss::Boss()
 	setPos(Vector2{ SCREENWIDTH / 2,100 });
 	collider.center = Vector2{ pos.x + (texture.width / 2),pos.y + (texture.height / 2) };
 	collider.radius = texture.width / 2;
-	hp = 1;
+	hp = 100;
 	AIBrain.push(ability1);
 	AIBrain.push(ability2);
 	AIBrain.push(ability3);
@@ -22,12 +22,15 @@ Boss::~Boss()
 
 void Boss::update(Player& player)
 {
-	
-	if (isAlive(player.hits)) {
+	//if boss is alive
+	if (isAlive(player.getHits())) {
 		this->draw(1);
+		//run boss pattern in order of AIBrain
 		if (AIBrain.front()->pattern(*this, player, bbpool)) {
 		} else { 
+			//when the pattern is done pop it off
 			AIBrain.pop();
+			//if all 3 patterns are done and boss is still alive push 3 patterns
 			if (AIBrain.size() < 1) {
 				AIBrain.push(ability1);
 				AIBrain.push(ability2);
@@ -36,7 +39,7 @@ void Boss::update(Player& player)
 		}
 
 		AIBrain.front()->drawBullets(bbpool);
-		DrawText(std::to_string(hits).c_str(), 100, 100, 50, WHITE);
+		//DrawText(std::to_string(hits).c_str(), 100, 100, 50, WHITE);
 		hit(player);
 	}
 	else {
@@ -94,5 +97,10 @@ void Boss::reset()
 	bbpool->reset();
 	hits = 0;
 	
+}
+
+int Boss::getHits()
+{
+	return hits;
 }
 

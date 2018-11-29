@@ -9,6 +9,7 @@ public:
 
 	bool pattern(Boss & boss, Player & player, BossBulletPool* bbpool) override;
 	void setDestination(SimpleSprites * temp, Boss & boss);
+private:
 	std::vector<Vector2> bossDest;
 };
 

@@ -18,7 +18,6 @@ int main()
 	Boss boss;
 	SetTargetFPS(120);
 	//--------------------------------------------------------------------------------------
-	int i = 0;
 	
 	// Main game loop
 	while (!WindowShouldClose())    // Detect window close button or ESC key
@@ -32,13 +31,14 @@ int main()
 		ClearBackground(RAYWHITE);
 		//TODO: BGM
 		background.draw();
+		//if it is on start screen wait for the button press
 		if (!Startscreen::play) {
 			startscreen.update();
 			boss.reset();
 			player.reset();
 		}
+		//play the game
 		else {
-			
 			player.update(boss);
 			boss.update(player);
 			//DrawCircle(boss.collider.center.x, boss.collider.center.y, boss.collider.radius, BLACK);

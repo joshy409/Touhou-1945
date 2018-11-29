@@ -19,7 +19,7 @@ BossPattern2::~BossPattern2()
 bool BossPattern2::pattern(Boss & boss, Player & player, BossBulletPool* bbpool)
 {
 	//move to left side shoot 3 rays of bullets toward players location
-	//then repeats the process in the middle of the room and right side of the room
+	//then repeats the process 5 times starting at the left and moving right
 	static int delayframe = 0;
 	static int bullet = 0;
 	static int destIndex = 0;

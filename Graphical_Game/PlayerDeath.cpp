@@ -23,14 +23,17 @@ PlayerDeath::~PlayerDeath()
 
 void PlayerDeath::update(Player & player)
 {
+	//delay variable
 	static int wait = 0;
-	DrawText("Game Over", 800, 500, 200, WHITE);
+
+	DrawText("Game Over", 400, 350, 200, WHITE);
+
 	for (int i = 0; i < explosions.size(); i++) {
 		DrawTextureEx(explosions[i]->texture, player.pos, 0, .3, WHITE);
 	}
 	wait++;
 
-	if (wait > 300) {
+	if (wait > 350) {
 		wait = 0;
 		Startscreen::play = false;
 	}

@@ -10,7 +10,6 @@ SimpleSprites::SimpleSprites(const SimpleSprites & copy)
 {
 	texture = copy.texture;
 	collider = copy.collider;
-
 }
 
 SimpleSprites::SimpleSprites(const std::string & filename)
@@ -22,6 +21,7 @@ SimpleSprites::SimpleSprites(const std::string & filename)
 SimpleSprites::~SimpleSprites()
 {
 }
+
 
 void SimpleSprites::translate(const Vector2 &delta)
 {
@@ -47,6 +47,7 @@ SimpleSprites * SimpleSprites::Clone()
 	return new SimpleSprites(*this);
 }
 
+//checks if the sprite hit the edge of screen
 bool SimpleSprites::collisionCheck(std::vector<Rectangle> playArea, Rectangle collider)
 {
 	for (auto rec : playArea) {

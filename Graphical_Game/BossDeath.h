@@ -1,6 +1,8 @@
 #pragma once
 #include "Startscreen.h"
 class Boss;
+
+//Boss death animation. slowly grow in size and explodes
 class BossDeath 
 
 {

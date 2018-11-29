@@ -16,10 +16,16 @@ Player::~Player()
 {
 }
 
+int Player::getHits()
+{
+	return hits;
+}
+
 //update function to check player inputs
 void Player::update(Boss& boss)
 {
-	if (isAlive(boss.hits)) {
+	//if the player is alive
+	if (isAlive(boss.getHits())) {
 		this->draw();
 		if (IsKeyDown(KEY_LEFT)) {
 			translate(Vector2{ -speed,0 });
@@ -37,18 +43,20 @@ void Player::update(Boss& boss)
 		shoot();
 		drawBullets();
 		hit(boss);
-		DrawText(std::to_string(hits).c_str(), 100, 50, 50, WHITE);
+
+		//DrawText(std::to_string(hits).c_str(), 100, 50, 50, WHITE);
 		pos.x = std::clamp((int)pos.x, 0, SCREENWIDTH - texture.width);
 		pos.y = std::clamp((int)pos.y, 0, SCREENHEIGHT - texture.height);
 		collider.x = std::clamp((int)collider.x, 70, SCREENWIDTH - 102);
 		collider.y = std::clamp((int)collider.y, 45, SCREENHEIGHT - 106);
 	}
 	else {
+		//if the player is dead run the death animation
 		death.update(*this);
 	}
 }
 
-
+//checks for player input to shoot
 void Player::shoot() {
 	if (IsKeyPressed(KEY_LEFT_CONTROL)) {
 		SimpleSprites* left = bullets->retrieve();
@@ -58,11 +66,13 @@ void Player::shoot() {
 	}
 }
 
+//draw all the active bullets from the object pool and translate them
 void Player::drawBullets() {
 	for (int i = 0; i < bullets->free->size(); i++) {
 		if (bullets->free->at(i) == true) {
 			bullets->pool->at(i)->translate(Vector2{ 0,-speed - 1 });
 			bullets->pool->at(i)->draw();
+			//if the bullet hit the top wall recycle
 			if (collisionCheck(Background::playArea, bullets->pool->at(i)->collider)) {
 				bullets->recycle(bullets->pool->at(i));
 			}

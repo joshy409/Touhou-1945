@@ -18,8 +18,8 @@ BossPattern1::~BossPattern1()
 
 bool BossPattern1::pattern(Boss & boss, Player & player, BossBulletPool* bbpool)
 {
-	//move to left side shoot 3 rays of bullets toward players location
-	//then repeats the process in the middle of the room and right side of the room
+	//selects a random spot, moves there and shoots 6 bullets at the players positon
+	//repeat 3 times
 	static int delayframe = 0;
 	static int bullet = 0;
 	static int destIndex = 0;

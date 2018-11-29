@@ -18,17 +18,17 @@ Startscreen::~Startscreen()
 void Startscreen::update()
 {
 	//Title
-	DrawText("Touhou", SCREENWIDTH / 3, SCREENHEIGHT - 500, 200, WHITE);
-	DrawText("1945", SCREENWIDTH / 3, SCREENHEIGHT - 300, 200, WHITE);
+	DrawText("Touhou", SCREENWIDTH / 4+100, SCREENHEIGHT - 800, 200, WHITE);
+	DrawText("1945", SCREENWIDTH / 4+250, SCREENHEIGHT - 600, 200, WHITE);
 
 	//button
 	DrawTextureEx(texture, pos, 0, 1.5, WHITE);
-	DrawText("PLAY", pos.x + 50, pos.y+5, 50, WHITE);
+	DrawText("PLAY", pos.x + 75, pos.y+10, 50, WHITE);
 
 	//change the button color to green if the mouse cursor is being hovered over
 	if (CheckCollisionPointRec(GetMousePosition(), collider)) {
 		DrawTextureEx(texture2, pos, 0, 1.5, WHITE);
-		DrawText("PLAY", pos.x+50, pos.y+5, 50, WHITE);
+		DrawText("PLAY", pos.x+75, pos.y+10, 50, WHITE);
 	}
 
 	//check for mouse click on the button
