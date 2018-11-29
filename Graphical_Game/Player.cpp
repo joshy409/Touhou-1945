@@ -65,6 +65,7 @@ void Player::drawBullets() {
 	}
 }
 
+//when player bullet hits the boss
 void Player::hit(Boss &enemy) {
 	for (int i = 0; i < bullets->free->size(); i++) {
 		if (bullets->free->at(i) == true) {

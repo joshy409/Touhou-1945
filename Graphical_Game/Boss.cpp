@@ -12,12 +12,6 @@ Boss::Boss()
 	AIBrain.push(ability1);
 	AIBrain.push(ability2);
 	AIBrain.push(ability3);
-	AIBrain.push(ability1);
-	AIBrain.push(ability2);
-	AIBrain.push(ability3);
-	AIBrain.push(ability1);
-	AIBrain.push(ability2);
-	AIBrain.push(ability3);
 	bbpool = new BossBulletPool();
 
 }
@@ -33,10 +27,13 @@ void Boss::update(Player& player)
 	if (isAlive(player.hits)) {
 		this->draw(1);
 		if (AIBrain.front()->pattern(*this, player, bbpool)) {
-
 		} else { 
-			//TODO: fix error when there is no element left in AIBrain
 			AIBrain.pop();
+			if (AIBrain.size() < 1) {
+				AIBrain.push(ability1);
+				AIBrain.push(ability2);
+				AIBrain.push(ability3);
+			}
 		}
 
 		AIBrain.front()->drawBullets(bbpool);
@@ -73,12 +70,14 @@ bool Boss::moveTo(Vector2 dest)
 	}
 }
 
+//when boss's buleet hits the player
 void Boss::hit(Player & player)
 {
 	for (int i = 0; i <  bbpool->free->size(); i++) {
 		if (bbpool->free->at(i) == true) {
 			if (CheckCollisionRecs(bbpool->pool->at(i)->collider, player.collider)) {
 				hits++;
+				//player game over
 				bbpool->recycle(bbpool->pool->at(i));
 			}
 		}

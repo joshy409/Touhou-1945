@@ -46,7 +46,7 @@ int main()
 			boss.update(player);
 		}
 
-		//End Screen
+		//TODO: End Screen and win screen
 		EndDrawing();
 		//----------------------------------------------------------------------------------
 	}
