@@ -16,5 +16,7 @@ public:
 	void recycle(const SimpleSprites* obj);
 
 	size_t capacity();
+
+	void reset();
 };
 

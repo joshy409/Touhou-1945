@@ -19,28 +19,33 @@ Player::~Player()
 //update function to check player inputs
 void Player::update(Boss& boss)
 {
-	this->draw();
-	if (IsKeyDown(KEY_LEFT)) {
-		translate(Vector2{ -speed,0 });
-	}  
-	
-	if (IsKeyDown(KEY_UP)) {
-		translate(Vector2{ 0,-speed });
-	}  
-	if (IsKeyDown(KEY_DOWN)) {
-		translate(Vector2{ 0,speed });
+	if (isAlive(boss.hits)) {
+		this->draw();
+		if (IsKeyDown(KEY_LEFT)) {
+			translate(Vector2{ -speed,0 });
+		}
+
+		if (IsKeyDown(KEY_UP)) {
+			translate(Vector2{ 0,-speed });
+		}
+		if (IsKeyDown(KEY_DOWN)) {
+			translate(Vector2{ 0,speed });
+		}
+		if (IsKeyDown(KEY_RIGHT)) {
+			translate(Vector2{ speed,0 });
+		}
+		shoot();
+		drawBullets();
+		hit(boss);
+		DrawText(std::to_string(hits).c_str(), 100, 50, 50, WHITE);
+		pos.x = std::clamp((int)pos.x, 0, SCREENWIDTH - texture.width);
+		pos.y = std::clamp((int)pos.y, 0, SCREENHEIGHT - texture.height);
+		collider.x = std::clamp((int)collider.x, 70, SCREENWIDTH - 102);
+		collider.y = std::clamp((int)collider.y, 45, SCREENHEIGHT - 106);
 	}
-	if (IsKeyDown(KEY_RIGHT)) {
-		translate(Vector2{ speed,0 });
+	else {
+		death.update(*this);
 	}
-	shoot();
-	drawBullets();
-	hit(boss);
-	DrawText(std::to_string(hits).c_str(), 100, 50, 50, WHITE);
-	pos.x = std::clamp((int)pos.x, 0, SCREENWIDTH - texture.width);
-	pos.y = std::clamp((int)pos.y, 0, SCREENHEIGHT - texture.height);
-	collider.x = std::clamp((int)collider.x, 70, SCREENWIDTH -102);
-	collider.y = std::clamp((int)collider.y, 45, SCREENHEIGHT - 106);
 }
 
 
@@ -66,13 +71,24 @@ void Player::drawBullets() {
 }
 
 //when player bullet hits the boss
-void Player::hit(Boss &enemy) {
+void Player::hit(Boss &boss) {
 	for (int i = 0; i < bullets->free->size(); i++) {
 		if (bullets->free->at(i) == true) {
-			if (CheckCollisionCircleRec(enemy.collider.center, enemy.collider.radius, bullets->pool->at(i)->collider)) {
+			if (CheckCollisionCircleRec(boss.collider.center, boss.collider.radius, bullets->pool->at(i)->collider)) {
 				hits++;
 				bullets->recycle(bullets->pool->at(i));
 			}
 		}
 	}
+}
+
+bool Player::isAlive(const int hits)
+{
+	return hits < 1;
+}
+
+void Player::reset()
+{
+	hits = 0;
+	bullets->reset();
 }

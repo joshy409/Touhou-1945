@@ -33,3 +33,13 @@ size_t ObjectPool::capacity()
 {
 	return pool->size();
 }
+
+void ObjectPool::reset()
+{
+	for (int i = 0; i < free->size(); i++) {
+		if (free->at(i) == true) {
+			recycle(pool->at(i));
+			
+		}
+	}
+}

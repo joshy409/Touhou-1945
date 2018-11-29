@@ -30,6 +30,7 @@ public:
 	bool moveTo(Vector2 dest);
 	void hit(Player& player);
 	void draw(float scale);
+	void reset();
 	BossPattern1* ability1 = new BossPattern1();
 	BossPattern2* ability2 = new BossPattern2();	
 	BossPattern3* ability3 = new BossPattern3();

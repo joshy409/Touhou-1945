@@ -1,5 +1,4 @@
 #include "Boss.h"
-
 #include "Player.h"
 
 Boss::Boss()
@@ -41,7 +40,6 @@ void Boss::update(Player& player)
 		hit(player);
 	}
 	else {
-		//TODO: death animation
 		death->update(*this);
 	}
 }
@@ -70,14 +68,13 @@ bool Boss::moveTo(Vector2 dest)
 	}
 }
 
-//when boss's buleet hits the player
+//when boss's bullet hits the player
 void Boss::hit(Player & player)
 {
 	for (int i = 0; i <  bbpool->free->size(); i++) {
 		if (bbpool->free->at(i) == true) {
 			if (CheckCollisionRecs(bbpool->pool->at(i)->collider, player.collider)) {
 				hits++;
-				//player game over
 				bbpool->recycle(bbpool->pool->at(i));
 			}
 		}
@@ -87,5 +84,15 @@ void Boss::hit(Player & player)
 void Boss::draw(float scale)
 {
 	DrawTextureEx(texture, pos, 0, scale, WHITE);
+}
+
+void Boss::reset()
+{
+	setPos(Vector2{ SCREENWIDTH / 2,100 });
+	collider.center = Vector2{pos.x + (texture.width / 2),pos.y + (texture.height / 2) };
+	collider.radius = texture.width / 2;
+	bbpool->reset();
+	hits = 0;
+	
 }
 
