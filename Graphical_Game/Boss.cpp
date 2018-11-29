@@ -8,7 +8,7 @@ Boss::Boss()
 	setPos(Vector2{ SCREENWIDTH / 2,100 });
 	collider.center = Vector2{ pos.x + (texture.width / 2),pos.y + (texture.height / 2) };
 	collider.radius = texture.width / 2;
-	hp = 100;
+	hp = 1;
 	AIBrain.push(ability1);
 	AIBrain.push(ability2);
 	AIBrain.push(ability3);
@@ -29,10 +29,13 @@ Boss::~Boss()
 
 void Boss::update(Player& player)
 {
+	
 	if (isAlive(player.hits)) {
+		this->draw(1);
 		if (AIBrain.front()->pattern(*this, player, bbpool)) {
 
 		} else { 
+			//TODO: fix error when there is no element left in AIBrain
 			AIBrain.pop();
 		}
 
@@ -41,7 +44,8 @@ void Boss::update(Player& player)
 		hit(player);
 	}
 	else {
-		DrawText("yay", SCREENWIDTH / 2, SCREENHEIGHT / 2, 100, WHITE);
+		//TODO: death animation
+		death->update(*this);
 	}
 }
 
@@ -79,5 +83,10 @@ void Boss::hit(Player & player)
 			}
 		}
 	}
+}
+
+void Boss::draw(float scale)
+{
+	DrawTextureEx(texture, pos, 0, scale, WHITE);
 }
 

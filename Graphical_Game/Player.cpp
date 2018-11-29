@@ -19,6 +19,7 @@ Player::~Player()
 //update function to check player inputs
 void Player::update(Boss& boss)
 {
+	this->draw();
 	if (IsKeyDown(KEY_LEFT)) {
 		translate(Vector2{ -speed,0 });
 	}  

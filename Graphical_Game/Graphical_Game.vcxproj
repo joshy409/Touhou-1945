@@ -139,6 +139,7 @@
     <ClCompile Include="Boss.cpp" />
     <ClCompile Include="BossAbilityBase.cpp" />
     <ClCompile Include="BossBulletPool.cpp" />
+    <ClCompile Include="BossDeath.cpp" />
     <ClCompile Include="BossPattern1.cpp" />
     <ClCompile Include="BossPattern2.cpp" />
     <ClCompile Include="BossPattern3.cpp" />
@@ -147,6 +148,7 @@
     <ClCompile Include="ObjectPool.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="SimpleSprites.cpp" />
+    <ClCompile Include="Startscreen.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\thirdparty\raylib\raylib.h" />
@@ -154,6 +156,7 @@
     <ClInclude Include="Boss.h" />
     <ClInclude Include="BossAbilityBase.h" />
     <ClInclude Include="BossBulletPool.h" />
+    <ClInclude Include="BossDeath.h" />
     <ClInclude Include="BossPattern1.h" />
     <ClInclude Include="BossPattern2.h" />
     <ClInclude Include="BossPattern3.h" />
@@ -161,6 +164,7 @@
     <ClInclude Include="ObjectPool.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="SimpleSprites.h" />
+    <ClInclude Include="Startscreen.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

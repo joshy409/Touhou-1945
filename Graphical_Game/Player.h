@@ -11,7 +11,7 @@ class Player :
 public:
 	Player();
 	~Player();
-
+	//TODO: Bullet Sound
 	BulletPool *bullets;
 	int hits;
 	float speed;

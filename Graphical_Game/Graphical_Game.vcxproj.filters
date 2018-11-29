@@ -51,6 +51,12 @@
     <ClCompile Include="BossPattern3.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Startscreen.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BossDeath.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\thirdparty\raylib\raylib.h">
@@ -87,6 +93,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="BossPattern3.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Startscreen.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BossDeath.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
