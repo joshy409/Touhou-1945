@@ -65,7 +65,7 @@ bool BossPattern2::pattern(Boss & boss, Player & player, BossBulletPool* bbpool)
 
 void BossPattern2::setDestination(SimpleSprites * temp, Boss & boss, int offset)
 {
-	temp->setPos(boss.pos);
+	temp->setPos(Vector2{ boss.pos.x + boss.texture.width / 2 - temp->texture.width / 2, boss.pos.y + boss.texture.height / 2 });
 	temp->travelDistance = Vector2{ (boss.pos.x + offset) - temp->pos.x, (boss.pos.y+1000) - temp->pos.y };
 	temp->distance = sqrt(pow((temp->pos.x - (boss.pos.x+offset)), 2) + pow((temp->pos.y - (boss.pos.y+1000)), 2));
 }
