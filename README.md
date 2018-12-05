@@ -38,7 +38,7 @@ Shoot -
 
 	Left Control
 
-More focus on the code design and structure than the gameplay it self.
+More focus on the code design and structure than the gameplay itself.
 
 Used prototype design to load bullets that have the same sprite
 
