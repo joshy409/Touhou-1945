@@ -19,3 +19,4 @@ At the bare minimum, your game project should make use of or incorporate the fol
 In other words, you should design your application with intention: how can you design the most organized and readable code (without compromising your productivity)?
 
 ## My Implementation
+![A screenshot of the included sample project](Graphical_Game/Touhou.png)
