@@ -20,3 +20,30 @@ In other words, you should design your application with intention: how can you d
 
 ## My Implementation
 ![A screenshot of the included sample project](Graphical_Game/Touhou.png)
+
+Basic Space Shooter
+
+Controls
+Move -
+
+	UP
+  
+	Down
+  
+	Left
+  
+	Right
+  
+Shoot -
+
+	Left Control
+
+More focus on the code design and structure than the gameplay it self.
+
+Used prototype design to load bullets that have the same sprite
+
+Used object pool for laser and boss bullets
+
+Used inheritance to control boss and player object
+
+Used polymorphsim to contorl boss AI
